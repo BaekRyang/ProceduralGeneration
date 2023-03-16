@@ -1,7 +1,7 @@
 class SecondType
 { //큐를 사용
     int iFirstRoom = 45;
-    int iMaxRoom = 15;
+    int iMaxRoom = 25;
     int iCreateRoomCount = 0;
     Random rand = new Random();
 
@@ -132,6 +132,7 @@ class SecondType
 
     void PlaceSpecialRoom(){
         //엔드룸은 큐에 저장되어 있는데, 알고리즘상 엔드룸중 가장 멀리 있는 것이 제일 마지막에 위치한다.
+        //그 방을 층을 내려가는데 필요한 아이템이 나오는 방으로 배치한다.
         iMap[qEndRoom.Pop()] = 9;
     }
 
@@ -144,8 +145,8 @@ class SecondType
                 switch (map[i]){
                     case 0:
                         Console.BackgroundColor = ConsoleColor.Black;
-                        Console.ForegroundColor = ConsoleColor.Black;
-                        Console.Write("X");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write(" X ");
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
@@ -155,14 +156,14 @@ class SecondType
                         {
                             Console.BackgroundColor = ConsoleColor.Green;
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.Write("S");
+                            Console.Write(" S ");
                             
                         }
                         else
                         {
                             Console.BackgroundColor = ConsoleColor.White;
                             Console.ForegroundColor = ConsoleColor.Black;
-                            Console.Write("O");
+                            Console.Write(" O ");
                         }
                             Console.BackgroundColor = ConsoleColor.Black;
                             Console.ForegroundColor = ConsoleColor.White;
@@ -171,7 +172,7 @@ class SecondType
                     case 2:
                         Console.BackgroundColor = ConsoleColor.Blue;
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write("E");
+                        Console.Write(" E ");
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
@@ -179,12 +180,12 @@ class SecondType
                     case 9:
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.Write("B");
+                        Console.Write(" K ");
                         Console.BackgroundColor = ConsoleColor.Black;
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                     default:
-                        Console.Write("＃");
+                        Console.Write(" ＃ ");
                         break;
                 }
             } 
@@ -192,36 +193,40 @@ class SecondType
             if (i % 10 == 9) {
                 switch(i/10){
                     case 1:
+                    Console.Write("  ");
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("O");
+                    Console.Write(" O ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write(" : 일반 방");
                     break;
 
                     case 2:
+                    Console.Write("  ");
                     Console.BackgroundColor = ConsoleColor.Blue;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("E");
+                    Console.Write(" E ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write(" : 엔드룸(특수방 생성 가능)");
                     break;
 
                     case 3:
+                    Console.Write("  ");
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("B");
+                    Console.Write(" K ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(" : 보스 방");
+                    Console.Write(" : Key 방");
                     break;
 
                     case 4:
+                    Console.Write("  ");
                     Console.BackgroundColor = ConsoleColor.Green;
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("S");
+                    Console.Write(" S ");
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write(" : 시작 방");
